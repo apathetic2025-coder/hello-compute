@@ -1,0 +1,45 @@
+```python
+class PyramidGame:
+    def __init__(self):
+        self.clues = [
+            "Hieroglyphics on the wall containing secrets.",
+            "An ancient map of hidden chambers.",
+            "A ceremonial mask lost in the sands.",
+            "A riddle inscribed on a stone tablet."
+        ]
+        self.inventory = []
+        self.has_ended = False
+
+    def explore(self):
+        print("You are exploring the pyramids...")
+        clue = self.find_clue()
+        print(f"You found: {clue}")
+        self.inventory.append(clue)
+        
+    def find_clue(self):
+        import random
+        return random.choice(self.clues)
+
+    def check_inventory(self):
+        print("Your inventory:")
+        for item in self.inventory:
+            print(f"- {item}")
+
+    def end_game(self):
+        self.has_ended = True
+        print("Thank you for playing! You will uncover more secrets next time.")
+
+# Initialize the game
+game = PyramidGame()
+
+while not game.has_ended:
+    action = input("What would you like to do? (explore/check inventory/end): ").lower()
+    if action == "explore":
+        game.explore()
+    elif action == "check inventory":
+        game.check_inventory()
+    elif action == "end":
+        game.end_game()
+    else:
+        print("Invalid action! Please choose again.")
+```
